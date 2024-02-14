@@ -60,11 +60,12 @@ model = tf.keras.models.Sequential([ #input_shape는 trainX가 (60000,28,28)이�
   #relu: 음수는 다 0으로 만들어주는 활성 함수
 
   tf.keras.layers.Dense(64, activation='relu'),
+  tf.keras.layers.Dropout(0.2),
   tf.keras.layers.Dense(10, activation='sigmoid'),
 ]) 
 
 model.compile(optimizer="adam",loss="binary_crossentropy", metrics= ['accuracy'])
 
 
-model.fit(train_ds, validation_data=val_ds epochs= 5)
+model.fit(train_ds, validation_data=val_ds, epochs= 5)
 
